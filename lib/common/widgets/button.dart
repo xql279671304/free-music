@@ -32,7 +32,8 @@ Widget customOutlineButton({
         buttonText.toUpperCase(),
         style: TextStyle(
           color: AppColors.primaryBackground,
-          fontSize: duSetHeight(fontSize),
+          fontSize: duSetFontSize(fontSize),
+          letterSpacing: 1.5,
         ),
       ),
     ),
