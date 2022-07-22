@@ -29,7 +29,9 @@ class _SignInPageState extends State<SignInPage> {
             ),
             child: Column(
               children: <Widget>[
-                const Spacer(flex: 1),
+                SizedBox(
+                  height: duSetHeight(32),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -69,7 +71,7 @@ class _SignInPageState extends State<SignInPage> {
           customOutlineButton(
             buttonText: 'login',
             width: 180,
-            onPressed: () => {},
+            onPressed: () => Navigator.pushNamed(context, '/login-error'),
           ),
           const Spacer(
             flex: 2,
