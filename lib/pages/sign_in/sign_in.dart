@@ -12,9 +12,13 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      endDrawer: customDrawer(context),
       body: Column(
         children: <Widget>[
           Container(
@@ -30,15 +34,20 @@ class _SignInPageState extends State<SignInPage> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: duSetHeight(32),
+                  height: duSetHeight(42),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Image.asset(
-                      'assets/images/icon_menu.png',
-                      width: duSetWidth(22),
-                      height: duSetHeight(17),
+                    GestureDetector(
+                      onTap: () {
+                        _key.currentState!.openEndDrawer();
+                      },
+                      child: Image.asset(
+                        'assets/images/icon_menu.png',
+                        width: duSetWidth(22),
+                        height: duSetHeight(17),
+                      ),
                     ),
                     SizedBox(
                       width: duSetWidth(38),
@@ -76,10 +85,13 @@ class _SignInPageState extends State<SignInPage> {
           const Spacer(
             flex: 2,
           ),
-          const Text(
-            'Forgot password?',
-            style: TextStyle(
-              color: AppColors.secondText,
+          TextButton(
+            onPressed: () => Navigator.pushNamed(context, '/sign-up'),
+            child: const Text(
+              'Forgot password?',
+              style: TextStyle(
+                color: AppColors.secondText,
+              ),
             ),
           ),
           const Spacer(

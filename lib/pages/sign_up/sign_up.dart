@@ -14,32 +14,9 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registration'),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.secondBackground,
-                AppColors.primaryBackground,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ),
-        titleTextStyle: const TextStyle(
-          color: AppColors.primaryElement,
-          fontSize: 18,
-        ),
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.primaryElement,
-          ),
-        ),
-        elevation: 0,
+      appBar: customAppBarReturn(
+        context,
+        title: 'Registration',
       ),
       backgroundColor: AppColors.primaryBackground,
       body: Column(
@@ -55,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           customOutlineButton(
             buttonText: 'create account',
-            onPressed: () => {},
+            onPressed: () => Navigator.pushNamed(context, '/sign-in'),
           ),
           const Spacer(
             flex: 3,
