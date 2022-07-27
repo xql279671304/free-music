@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:free_music/common/utils/utils.dart';
 import 'package:free_music/common/values/values.dart';
@@ -64,5 +65,37 @@ PreferredSizeWidget customAppBarReturn(
       ),
     ),
     elevation: 0,
+  );
+}
+
+PreferredSizeWidget customAppBarReturnAndMenu(
+  BuildContext context,
+  GlobalKey<ScaffoldState> _key, {
+  String title = '',
+}) {
+  return AppBar(
+    title: Text(title),
+    flexibleSpace: _buildFlexibleSpace(),
+    titleTextStyle: const TextStyle(
+      color: AppColors.primaryElement,
+      fontSize: 18,
+    ),
+    leading: IconButton(
+      onPressed: () => Navigator.of(context).pop(),
+      icon: const Icon(
+        Icons.arrow_back,
+        color: AppColors.primaryElement,
+      ),
+    ),
+    elevation: 0,
+    actions: <Widget>[
+      IconButton(
+        onPressed: () => _key.currentState!.openEndDrawer(),
+        icon: const Icon(Icons.menu),
+        color: AppColors.primaryElement,
+        tooltip: 'menu',
+        padding: EdgeInsets.only(right: duSetWidth(32)),
+      )
+    ],
   );
 }

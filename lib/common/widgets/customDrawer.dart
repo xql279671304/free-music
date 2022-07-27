@@ -91,7 +91,7 @@ Widget customDrawer(BuildContext context) {
           child: Column(
             children: <Widget>[
               _buildListItem(context, 'Profile', '/sign-in'),
-              _buildListItem(context, 'Albums', '/sign-in'),
+              _buildListItem(context, 'Albums', '/albums'),
               _buildListItem(context, 'Tracks', '/sign-in'),
               _buildListItem(context, 'Settings', '/sign-in'),
             ],
