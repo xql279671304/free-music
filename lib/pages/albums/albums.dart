@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:free_music/common/utils/utils.dart';
 import 'package:free_music/common/values/values.dart';
@@ -12,7 +10,8 @@ class AlbumsPage extends StatefulWidget {
   State<AlbumsPage> createState() => _AlbumsPageState();
 }
 
-Widget _buildListItem({
+Widget _buildListItem(
+  BuildContext context, {
   bool hasSplit = true,
 }) {
   return Container(
@@ -35,9 +34,14 @@ Widget _buildListItem({
                 SizedBox(
                   height: duSetHeight(28),
                 ),
-                Image(
-                  image: const AssetImage('assets/images/albums_1@2x.png'),
-                  height: duSetHeight(225),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/album');
+                  },
+                  child: Image(
+                    image: const AssetImage('assets/images/albums_1@2x.png'),
+                    height: duSetHeight(225),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,9 +97,9 @@ class _AlbumsPageState extends State<AlbumsPage> {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          _buildListItem(),
-          _buildListItem(),
-          _buildListItem(hasSplit: false),
+          _buildListItem(context),
+          _buildListItem(context),
+          _buildListItem(context, hasSplit: false),
         ],
       ),
     );

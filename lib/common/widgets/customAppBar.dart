@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:free_music/common/utils/utils.dart';
 import 'package:free_music/common/values/values.dart';
 
-Widget _buildFlexibleSpace() {
+Widget _buildFlexibleSpace({
+  Color? beginColor,
+  Color? endColor,
+}) {
   return Container(
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       gradient: LinearGradient(
         colors: [
-          AppColors.secondBackground,
-          AppColors.primaryBackground,
+          beginColor ?? AppColors.secondBackground,
+          endColor ?? AppColors.primaryBackground,
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -72,19 +75,25 @@ PreferredSizeWidget customAppBarReturnAndMenu(
   BuildContext context,
   GlobalKey<ScaffoldState> _key, {
   String title = '',
+  Color color = AppColors.primaryElement,
+  Color? beginColorBar,
+  Color? endColorBar,
 }) {
   return AppBar(
     title: Text(title),
-    flexibleSpace: _buildFlexibleSpace(),
-    titleTextStyle: const TextStyle(
-      color: AppColors.primaryElement,
+    flexibleSpace: _buildFlexibleSpace(
+      beginColor: beginColorBar,
+      endColor: endColorBar,
+    ),
+    titleTextStyle: TextStyle(
+      color: color,
       fontSize: 18,
     ),
     leading: IconButton(
       onPressed: () => Navigator.of(context).pop(),
-      icon: const Icon(
+      icon: Icon(
         Icons.arrow_back,
-        color: AppColors.primaryElement,
+        color: color,
       ),
     ),
     elevation: 0,
@@ -92,7 +101,7 @@ PreferredSizeWidget customAppBarReturnAndMenu(
       IconButton(
         onPressed: () => _key.currentState!.openEndDrawer(),
         icon: const Icon(Icons.menu),
-        color: AppColors.primaryElement,
+        color: color,
         tooltip: 'menu',
         padding: EdgeInsets.only(right: duSetWidth(32)),
       )

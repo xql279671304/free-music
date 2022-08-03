@@ -43,8 +43,8 @@ class _SignInPageState extends State<SignInPage> {
                       onTap: () {
                         _key.currentState!.openEndDrawer();
                       },
-                      child: Image.asset(
-                        'assets/images/icon_menu.png',
+                      child: Image(
+                        image: const AssetImage('assets/images/icon_menu.png'),
                         width: duSetWidth(22),
                         height: duSetHeight(17),
                       ),
