@@ -17,7 +17,7 @@ class AppColors {
   static const Color secondText = Color(0xFF707070);
 
   /// second background little purple
-  static const Color secondBackground = Color(0xFFf1e7fc);
+  static const Color secondBackground = Color(0xFFF1E7FC);
 
   /// split line color
   static const Color splitLine = Color(0xFFe5e5e5);

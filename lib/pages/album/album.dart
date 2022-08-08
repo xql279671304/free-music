@@ -10,64 +10,74 @@ class AlbumPage extends StatefulWidget {
   State<AlbumPage> createState() => _AlbumPageState();
 }
 
-Widget _buildListItem() {
+Widget _buildListItem(BuildContext context) {
   return Container(
     padding: const EdgeInsets.only(
       top: 20,
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        SizedBox(
-          child: Row(
-            children: [
-              Image(
-                image: const AssetImage('assets/images/play.png'),
-                width: duSetWidth(20),
-                height: duSetHeight(20),
-              ),
-              const SizedBox(
-                width: 4,
-              ),
-              const Text(
-                'The Crunge',
-                style: TextStyle(
-                  color: AppColors.primaryText,
-                  letterSpacing: 1,
-                  wordSpacing: 2,
+    child: GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/album-info');
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          SizedBox(
+            child: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    return;
+                  },
+                  child: Image(
+                    image: const AssetImage('assets/images/play.png'),
+                    width: duSetWidth(20),
+                    height: duSetHeight(20),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  width: 4,
+                ),
+                const Text(
+                  'The Crunge',
+                  style: TextStyle(
+                    color: AppColors.primaryText,
+                    letterSpacing: 1,
+                    wordSpacing: 2,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-        const Text(
-          '7:59',
-          style: TextStyle(
-            color: AppColors.secondText,
+          const Text(
+            '7:59',
+            style: TextStyle(
+              color: AppColors.secondText,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
 
-Widget _buildList() {
+Widget _buildList(BuildContext context) {
   return SizedBox(
     width: duSetWidth(295.5),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
-        _buildListItem(),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
+        _buildListItem(context),
       ],
     ),
   );
@@ -124,7 +134,7 @@ class _AlbumPageState extends State<AlbumPage> {
                       ),
                     ),
                   ),
-                  _buildList(),
+                  _buildList(context),
                 ],
               ),
             ),
